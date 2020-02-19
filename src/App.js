@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import Todo from "./Todo";
+import {Link} from "react-router-dom";
 
 class App extends Component {
 
@@ -84,6 +85,7 @@ class App extends Component {
   render() {
     return (
       <div className="App">
+        <Link to="/about">About</Link>
         <Todo todos={this.state.todos} changeStatus={this.changeStatus} addTodo={this.addTodo}/>
       </div>
     )

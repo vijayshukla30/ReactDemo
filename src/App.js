@@ -53,6 +53,18 @@ class App extends Component {
     ]
   };
 
+  addTodo = (obj) => {
+    console.log(obj);
+    let newTodos = this.state.todos;
+    newTodos.push(obj);
+    console.log(newTodos);
+
+    this.setState({
+      todos: newTodos
+    });
+
+  };
+
   changeStatus = (id) => {
     console.log(id);
     let newTodos = [];
@@ -72,7 +84,7 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <Todo todos={this.state.todos} changeStatus={this.changeStatus}/>
+        <Todo todos={this.state.todos} changeStatus={this.changeStatus} addTodo={this.addTodo}/>
       </div>
     )
   }

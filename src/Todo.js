@@ -6,8 +6,6 @@ class Todo extends Component {
 
   state = {
     title: '',
-    status: false,
-    id: 10
   };
 
   onchange = (event) => {
@@ -21,7 +19,7 @@ class Todo extends Component {
 
   onSubmit = () => {
     console.log(this.state);
-    this.props.addTodo(this.state);
+    this.props.addTodo(this.state.title);
   };
 
   render() {

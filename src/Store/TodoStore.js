@@ -80,7 +80,7 @@ class TodoStore extends EventEmitter {
   }
 }
 
-const todoStore = new TodoStore;
+const todoStore = new TodoStore();
 dispatcher.register(todoStore.handleActions.bind(todoStore));
 
 window.dispatcher = dispatcher;

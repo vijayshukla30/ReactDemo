@@ -4,25 +4,31 @@ class Item extends Component {
   getStyle = () => {
     return {
       textDecoration: this.props.todo.status ? 'line-through' : 'none',
-      background: "lightgreen",
-      padding: "10px",
-      borderBottom: '3px black dotted'
     }
   };
 
   changeStatus(event, id) {
-    console.log(event);
-    console.log(id);
     this.props.changeStatus()
   };
 
   render() {
     const {title, id} = this.props.todo;
     return (
-      <div style={this.getStyle()}>
-        <input type="checkbox" onChange={this.props.changeStatus.bind(this, id)}/>
-        Title: {title}
-      </div>
+      <tr>
+        <td>
+          <input type="checkbox" onChange={this.props.changeStatus.bind(this, id)}/>
+        </td>
+        <td>
+          <div style={this.getStyle()}>
+            {title}
+          </div>
+        </td>
+        <td>
+          <button className="btn btn-danger btn-sm">
+            Del
+          </button>
+        </td>
+      </tr>
     );
   }
 }

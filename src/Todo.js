@@ -27,23 +27,47 @@ class Todo extends Component {
   render() {
     return (
       <Fragment>
-        <form>
-          <div className="form-group">
-            <input type="text" className="form-control" name="title"
-                   value={this.state.title} onChange={this.onchange}/>
+        <div className="row">
+          <div className="col-md-2"></div>
+          <div className="col-md-8">
+            <form>
+              <div className="form-row align-items-center">
+                <div className="col-auto">
+                  <input type="text" className="form-control" name="title"
+                         value={this.state.title} onChange={this.onchange}/>
+                </div>
+                <div className="col-auto">
+                  <button type="button"
+                          className="btn btn-primary mb-2"
+                          onClick={this.onSubmit}>Submit
+                  </button>
+                </div>
+              </div>
+            </form>
           </div>
-          <button type="button" className="btn btn-primary"
-                  onClick={this.onSubmit}>Submit
-          </button>
-        </form>
-        {
-          this.props.todos.map((todo) => (
-            <Item todo={todo}
-                  key={todo.id}
-                  changeStatus={this.props.changeStatus}
-            />
-          ))
-        }
+          <div className="col-md-2"></div>
+        </div>
+        <div className="row">
+          <div className="col-md-12">
+            <table className="table table-bordered table-striped">
+              <thead>
+              <tr>
+                <td>Stat</td>
+                <td>Item</td>
+                <td>Action</td>
+              </tr>
+              </thead>
+              <tbody>
+              {
+                this.props.todos.map((todo) => (
+                  <Item todo={todo} key={todo.id} changeStatus={this.props.changeStatus}/>
+                ))
+              }
+              </tbody>
+            </table>
+          </div>
+        </div>
+
       </Fragment>
     );
   }

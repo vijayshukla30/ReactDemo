@@ -8,6 +8,14 @@ class App extends Component {
     todos: TodoStore.getAllItem()
   };
 
+  componentDidMount() {
+    TodoStore.on("change", () => {
+      this.setState({
+        todos: TodoStore.getAllItem()
+      })
+    })
+  }
+
   addTodo = (obj) => {
     console.log(obj);
     let newTodos = this.state.todos;

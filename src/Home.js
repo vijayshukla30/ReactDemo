@@ -9,11 +9,18 @@ class Home extends Component {
   };
 
   componentDidMount() {
-    TodoStore.on("change", () => {
-      this.setState({
-        todos: TodoStore.getAllItem()
-      })
+    TodoStore.on("change", this.getTodos);
+    console.log("count", TodoStore.listenerCount("change"));
+  }
+
+  getTodos = () => {
+    this.setState({
+      todos: TodoStore.getAllItem()
     })
+  };
+
+  componentWillUnmount() {
+    TodoStore.removeListener("change", this.getTodos)
   }
 
   addTodo = (title) => {

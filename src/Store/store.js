@@ -1,20 +1,16 @@
-import {createStore} from "redux";
+import {combineReducers, createStore} from "redux";
 
-//Create a Reducer
-const reducer = function (state, action) {
-  if (action.type === "INC") {
-    return state + action.data
-  }
+import userReducer from "./user-reducer";
+import tweetReducer from "./tweet-reducer";
 
-  if (action.type === "DEC") {
-    return state - action.data
-  }
-
-  return state;
-};
+//Combine all reducers
+const reducers = combineReducers({
+  user: userReducer,
+  tweets: tweetReducer
+});
 
 //Create A Store
-const store = createStore(reducer, 0);
+const store = createStore(reducers);
 
 //Subscribe the store
 store.subscribe(() => {

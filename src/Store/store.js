@@ -1,8 +1,8 @@
 import {createStore} from "redux";
 
 //Create a Reducer
-const reducer = function () {
-
+const reducer = function (state, action) {
+  return state;
 };
 
 //Create A Store

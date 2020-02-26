@@ -1,4 +1,6 @@
 import {applyMiddleware, combineReducers, createStore} from "redux";
+import logger from "redux-logger";
+
 
 import userReducer from "./user-reducer";
 import tweetReducer from "./tweet-reducer";
@@ -9,16 +11,7 @@ const reducers = combineReducers({
   tweets: tweetReducer
 });
 
-
-// Add Logger as Middleware
-// Create a Logger
-const logger = (store) => (next) => (action) => {
-  console.log("Action is Triggered", action);
-  // It will hold the action. So to forward action to reducer we need to use next
-  next(action);
-};
-
-const middleware = applyMiddleware(logger);
+const middleware = applyMiddleware(logger());
 
 //Create A Store
 const store = createStore(reducers, middleware);
